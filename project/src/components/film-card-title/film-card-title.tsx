@@ -1,3 +1,5 @@
+import { generatePath, useNavigate } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import { Header } from '../header/header';
 import { MyListButton } from '../my-list-button/my-list-button';
 
@@ -6,9 +8,15 @@ type FilmCardTitleProps = {
   name: string;
   genre: string;
   released: number;
+  id: number;
 }
 
-export function FilmCardTitle({backgroundImage, name, genre, released}: FilmCardTitleProps) {
+export function FilmCardTitle({backgroundImage, name, genre, released, id}: FilmCardTitleProps) {
+  const navigate = useNavigate();
+
+  const handleSelectReview = () => {
+    navigate(generatePath( AppRoute.AddReview, {filmId: String(id)}) );
+  };
 
   return (
     <div className="film-card__hero">
@@ -35,7 +43,7 @@ export function FilmCardTitle({backgroundImage, name, genre, released}: FilmCard
             </button>
             <MyListButton/>
             {/* href="add-review.html"  */}
-            <a href="#" className="btn film-card__button">Add review</a>
+            <button className="btn film-card__button" onClick={handleSelectReview} type="button">Add review</button>
           </div>
         </div>
       </div>

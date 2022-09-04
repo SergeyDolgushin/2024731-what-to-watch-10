@@ -9,6 +9,7 @@ import { useApiService } from '../../services/api-services';
 import { getFilms, setLoaded } from '../../store/actions';
 import { MyList } from '../my-list/my-list';
 import { PrivateRoute } from '../private-route/private-route';
+import { Review } from '../../pages/review/review';
 
 export function App(): JSX.Element {
   const {authStatus} = useAppSelector((state) => state);
@@ -36,6 +37,16 @@ export function App(): JSX.Element {
               authorizationStatus={authStatus}
             >
               <MyList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={AppRoute.AddReview}
+          element={
+            <PrivateRoute
+              authorizationStatus={authStatus}
+            >
+              <Review />
             </PrivateRoute>
           }
         />

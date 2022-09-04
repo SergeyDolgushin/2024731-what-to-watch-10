@@ -8,17 +8,20 @@ import { FilmsList } from '../../components/films-list/films-list';
 import { Footer } from '../../components/footer/footer';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useApiService } from '../../services/api-services';
-import { getSelectedFilm, loadComments, setLoaded } from '../../store/actions';
+import { getSelectedFilm, setLoaded } from '../../store/actions';
+import { getComments } from '../../store/api-actions';
+
 
 export function MoviePage(): JSX.Element | null {
   const [section, setSection] = useState('Overview');
   const {films, isLoading, selectedFilm, comments} = useAppSelector((state) => state);
   const { filmId } = useParams<string>();
-  const { getFilm, getComments } = useApiService();
+  const { getFilm} = useApiService();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (filmId) {
+      dispatch(getComments(String(filmId)));
       getFilm(filmId).then((res) => {
         dispatch(getSelectedFilm(res));
         dispatch(setLoaded({isLoading: false}));
@@ -26,13 +29,6 @@ export function MoviePage(): JSX.Element | null {
     }
   }, [filmId]);
 
-  useEffect(() => {
-    if (filmId) {
-      getComments(filmId).then((res) => {
-        dispatch(loadComments(res));
-      });
-    }
-  }, [filmId]);
 
   const choosedSection = () => {
     switch (section) {
@@ -63,6 +59,7 @@ export function MoviePage(): JSX.Element | null {
             name={selectedFilm.name}
             released={selectedFilm.released}
             genre={selectedFilm.genre}
+            id={selectedFilm.id}
           />
           <div className="film-card__wrap film-card__translate-top">
             <div className="film-card__info">

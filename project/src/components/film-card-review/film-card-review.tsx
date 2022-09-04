@@ -1,10 +1,10 @@
-import { comment } from '../../types/types';
+import { Comment } from '../../types/types';
 
 type FilmCardCommentsProps = {
-  comments: comment[];
+  comments: Comment[];
 }
 
-const makeReviewsList = (array: comment[], min: number, max: number) =>{
+const makeReviewsList = (array: Comment[], min: number, max: number) =>{
   const slisedArray = array.slice(min, max);
 
   return slisedArray.map((item) => (
@@ -32,7 +32,7 @@ export function FilmCardReview({comments}: FilmCardCommentsProps) {
         {makeReviewsList(comments, 0, 3)}
       </div>
       <div className="film-card__reviews-col">
-        {makeReviewsList(comments, 4, 6)}
+        {makeReviewsList(comments, 3, 6)}
       </div>
     </div>
   );

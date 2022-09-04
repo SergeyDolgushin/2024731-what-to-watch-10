@@ -24,20 +24,26 @@ export type State = {
   name: string;
   films: Film[] | [];
   selectedFilm: Film;
-  comments: comment[] | [];
+  comments: Comment[] | [];
   promo: Film;
   filter: string;
 }
 
-export type comment = {
-  comment: string
-  date: string
-  id: number
-  rating: number
+export type Comment = {
+  comment: string;
+  date: string;
+  id: number;
+  rating: number;
   user: {
-    id: number
-    name: string
+    id: number;
+    name: string;
   }
+}
+
+export type UserComment = {
+  comment: string;
+  rating: number;
+  filmId: string | undefined;
 }
 
 export type AuthData = {

@@ -20,11 +20,5 @@ export const useApiService = () => {
     return res;
   };
 
-  const getComments = async (idFilm: string) => {
-    dispatch(setLoaded({isLoading: true}));
-    const res = await request(`${_apiBase}comments/${idFilm}`);
-    return res;
-  };
-
-  return { loading, error, getAllFilms, clearError, getFilm, getComments };
+  return { loading, error, getAllFilms, clearError, getFilm };
 };

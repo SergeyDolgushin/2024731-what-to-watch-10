@@ -4,7 +4,7 @@ export enum AppRoute {
   Movie = '/films/:filmId',
   Root = '/',
   // Player = '/player/:id',
-  // AddReview = '/films/:id/review',
+  AddReview = '/films/:filmId/review',
   // PageNotFound = '*',
 }
 
@@ -21,7 +21,8 @@ export enum APIRoute {
   // Movie = '/films/:filmId',
   // Root = '/',
   // // Player = '/player/:id',
-  // AddReview = '/films/:id/review',
+  AddReview = '/comments/',
+  Comments = '/comments/:filmId'
   // PageNotFound = '*',
 }
 
