@@ -24,3 +24,17 @@ export enum APIRoute {
   // AddReview = '/films/:id/review',
   // PageNotFound = '*',
 }
+
+export enum Filter {
+  All = 'All',
+  Comedies = 'Comedie',
+  Crime = 'Crime',
+  Documentary='Documentary',
+  Dramas = 'Drama',
+  Horror = 'Horror',
+  Kids = 'Family',
+  Romance = 'Romance',
+  SciFi = 'Sci-Fi',
+  Thrillers = 'Thriller',
+}
+

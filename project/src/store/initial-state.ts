@@ -1,9 +1,10 @@
-import { AuthorizationStatus } from '../const';
+import { AuthorizationStatus, Filter } from '../const';
 import { State } from '../types/types';
 
 
 export const initialState: State = {
   authStatus: AuthorizationStatus.Unknown,
+  filter: Filter.All,
   isLoading: true,
   name: 'Paris',
   films: [],

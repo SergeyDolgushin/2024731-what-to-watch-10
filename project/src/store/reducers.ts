@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { getPromo, getFilms, setLoaded, getSelectedFilm, loadComments, requireAuthorization, authorize, logout } from './actions';
+import { getPromo, getFilms, setLoaded, getSelectedFilm, loadComments, requireAuthorization, authorize, logout, changeFilter } from './actions';
 import { initialState } from './initial-state';
 
 
@@ -28,6 +28,8 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(logout, (state, action) => {
       state.authStatus = action.payload;
+    }).addCase(changeFilter, (state, action) => {
+      state.filter = action.payload;
     });
 });
 

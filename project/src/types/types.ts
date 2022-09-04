@@ -26,6 +26,7 @@ export type State = {
   selectedFilm: Film;
   comments: comment[] | [];
   promo: Film;
+  filter: string;
 }
 
 export type comment = {

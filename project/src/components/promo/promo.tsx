@@ -1,11 +1,9 @@
-import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { Header } from '../header/header';
+import { MyListButton } from '../my-list-button/my-list-button';
 
 export function Promo() {
-  const {promo, films} = useAppSelector((state) => state);
-  const favoritesCount = films.filter((item) => item.isFavorite).length;
+  const {promo} = useAppSelector((state) => state);
 
   return (
     <section className="film-card" style={{backgroundColor: promo.backgroundColor}}>
@@ -35,15 +33,7 @@ export function Promo() {
                 </svg>
                 <span>Play</span>
               </button>
-              <Link to={AppRoute.MyList}>
-                <button className="btn btn--list film-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use href="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                  <span className="film-card__count">{favoritesCount}</span>
-                </button>
-              </Link>
+              <MyListButton/>
             </div>
           </div>
         </div>

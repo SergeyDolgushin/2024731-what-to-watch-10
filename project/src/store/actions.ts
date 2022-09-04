@@ -9,3 +9,4 @@ export const loadComments = createAction<comment[]>('main/getComments');
 export const requireAuthorization = createAction<string>('user/checkAuthStatus');
 export const authorize = createAction<string>('user/Login');
 export const logout = createAction<string>('user/Logout');
+export const changeFilter = createAction<string>('app/changeFilter');

@@ -4,6 +4,7 @@ import { Footer } from '../../components/footer/footer';
 import { GenresSortMenu } from '../../components/genres-sort-menu/genres-sort-menu';
 import { Promo } from '../../components/promo/promo';
 import { useAppSelector } from '../../hooks';
+import { useFilter } from '../../hooks/useFilter';
 
 const initialFilmCount = 8;
 
@@ -11,6 +12,8 @@ export function MainPage(): JSX.Element | null{
   const {isLoading, films} = useAppSelector((state) => state);
   const [filmsCount, setFilmsCount] = useState(initialFilmCount);
   const isHidden = filmsCount >= films.length ? 'catalog__button visually-hidden' : 'catalog__button';
+
+  const filteredFilm = useFilter(films);
 
   const handleOnClickShowMoreButton = () => {
     const newCount = filmsCount + initialFilmCount;
@@ -25,7 +28,7 @@ export function MainPage(): JSX.Element | null{
           <section className="catalog">
             <h2 className="catalog__title visually-hidden">Catalog</h2>
             <GenresSortMenu/>
-            {FilmsList(filmsCount, films)}
+            {FilmsList(filmsCount, filteredFilm)}
             <div className="catalog__more">
               <button
                 className={isHidden}
